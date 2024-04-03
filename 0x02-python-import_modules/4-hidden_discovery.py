@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-import dis
+import marshal
 import types
 
 if __name__ == "__main__":
     with open("hidden_4.pyc", "rb") as f:
-        code = f.read()
+        code = marshal.load(f)
+
     module = types.ModuleType("hidden_4")
     exec(code, module.__dict__)
 
